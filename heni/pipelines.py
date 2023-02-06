@@ -5,9 +5,16 @@
 
 
 # useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
-
+import pandas as pd
 
 class HeniPipeline:
+    items = []
+
     def process_item(self, item, spider):
+        self.items.append(item)
         return item
+
+    def close_spider(self, spider):
+        x = pd.DataFrame(self.items, columns=['url','title','media','height_cm','width_cm','price_gbp'])
+        #print(x.head())
+        x.to_csv("output.csv", index=False)
