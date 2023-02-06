@@ -16,5 +16,4 @@ class HeniPipeline:
 
     def close_spider(self, spider):
         x = pd.DataFrame(self.items, columns=['url','title','media','height_cm','width_cm','price_gbp'])
-        #print(x.head())
-        x.to_csv("output.csv", index=False)
+        x.to_csv("output_task3.csv", index=False)

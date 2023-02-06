@@ -24,7 +24,7 @@ class WebCrawler(scrapy.Spider):
         url = response.url
         title = response.xpath("//h1[@data-hook='product-title']/text()").get()
         price = response.xpath("//meta[@property='product:price:amount']/@content").get()
-        description = response.xpath("//pre[@data-hook='description']//p//text()").getall()
+        description = response.xpath("//pre[@data-hook='description']//text()").getall()
         media = ""
         try:
             media = description[0]
